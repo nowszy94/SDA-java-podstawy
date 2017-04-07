@@ -4,31 +4,7 @@ import java.util.Scanner;
 
 public class Zajecia4 {
     public static void main(String[] args) {
-//        int dayInVariable = 2;
-//        int monthInVariable = 5;
-//        int yearInVariable = 2017;
-//        displayDate(21, 5, 2017);
-//        displayDate(dayInVariable, monthInVariable, yearInVariable);
-//
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("Insert day: ");
-//        int dayFromUser = scanner.nextInt();
-//        System.out.println("Insert month: ");
-//        int monthFromUser = scanner.nextInt();
-//        System.out.println("Insert year: ");
-//        int yearFromUser = scanner.nextInt();
-//        displayDate(dayFromUser, monthFromUser, yearFromUser);
-
-        int[] array = {2, 3, 10, 0, 2, -5, -3, 2};
-//        int minValue = minFromArray(array); //int minValue = -5
-//        int maxValue = maxFromArray(array);
-//        System.out.println();
-//        int sum = sum(array);
-//        System.out.println("Sum: " + sum);
-//        System.out.println("Suma: " + sum);
-//        double avgValue = avg(array);
-//        System.out.println("Avg: " + avgValue);
-//        System.out.println("Srednia: " + avgValue);
+        int[] array = getArrayFromUser();
         statistics(array);
     }
 
@@ -51,6 +27,18 @@ public class Zajecia4 {
             }
         }
         System.out.println("]");
+    }
+
+    public static int[] getArrayFromUser() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Insert number of elements: ");
+        int size = scanner.nextInt();
+        int[] array = new int[size];
+        for (int i = 0; i < array.length; i++) {
+            System.out.println("Insert next number");
+            array[i] = scanner.nextInt();
+        }
+        return array;
     }
 
     public static int minFromArray(int[] array) {
