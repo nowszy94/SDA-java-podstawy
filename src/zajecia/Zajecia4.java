@@ -4,8 +4,39 @@ import java.util.Scanner;
 
 public class Zajecia4 {
     public static void main(String[] args) {
-        int[] array = getArrayFromUser();
-        statistics(array);
+        int[] array = {1,2,4,5,6,4,2,5,7,8,5,3};
+//        statistics(array);
+        displayArray(array);
+        displayReversed(array);
+
+        //pobranie od usera tablicy
+        //wyswietlenie w odwrotnej kolejnosci
+        int[] arrayFromUser = getArrayFromUser();
+        displayReversed(arrayFromUser);
+    }
+
+    public static void displayArray(int[] array) {
+        System.out.print("[");
+        for(int i = 0; i < array.length; i++) {
+            System.out.print(array[i]);
+            if (i != array.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+
+    public static int[] reverseArray(int[] array) {
+        int[] newArray = new int[array.length];
+        for (int i = 0 ; i <array.length; i++) {
+//            newArray[i] = array[array.length - i - 1];
+            newArray[array.length - i -1] = array[i];
+        }
+        return newArray;
+    }
+
+    public static void displayReversed(int[] array) {
+        displayArray(reverseArray(array));
     }
 
     public static void statistics(int[] array) {
@@ -15,18 +46,7 @@ public class Zajecia4 {
         System.out.println("Avg: " + avg(array));
         System.out.println("Span: " + span(array));
         System.out.print("Reversed: ");
-        reverse(array);
-    }
-
-    public static void reverse(int[] array) {
-        System.out.print("[");
-        for (int i = array.length - 1; i >= 0; i--) {
-            System.out.print(array[i]);
-            if (i != 0) {
-                System.out.print(", ");
-            }
-        }
-        System.out.println("]");
+//        reverse(array);
     }
 
     public static int[] getArrayFromUser() {
