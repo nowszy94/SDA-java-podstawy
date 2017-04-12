@@ -8,14 +8,75 @@ public class Zajecia6 {
 //        Random random = new Random();
 //        int result = game(random.nextInt(100));
 //        System.out.println("You finished in " + result + " steps.");
-        System.out.println("3 " + numberOfDigits(357));
-        System.out.println("4 " + numberOfDigits(3576));
-        System.out.println("5 " + numberOfDigits(35767));
-        System.out.println("6 " + numberOfDigits(357678));
-        System.out.println("8 " + numberOfDigits(35767123));
-        System.out.println("1 " + numberOfDigits(2));
-        System.out.println("2 " + numberOfDigits(34));
-        System.out.println("1 " + numberOfDigits(0));
+
+//        System.out.println("15 " + sumOfDigits(357));
+//        System.out.println("17 " + sumOfDigits(3572));
+//        System.out.println(sumOfRandom(150));
+//        System.out.println(sumOfRandom(150));
+//        System.out.println(sumOfRandom(150));
+//        Zajecia4.displayArray(numberToArray(159));
+//        Zajecia4.displayArray(numberToArray(357));
+//        int[] numberAsArray = numberToArray(357);
+//        Zajecia4.displayArray(numberAsArray);
+//        System.out.println(arrayToNumber(numberAsArray));
+        int[] array = {0,2,3,4,6,3,6,7,4};
+        System.out.println(arrayToNumber(array));
+
+    }
+
+    //[3,5,7] -> 357
+    //[9,9,7] -> 997
+    //[3,2,1,5] -> 3215
+    public static int arrayToNumber(int[] array) {
+        int sum = 0;
+        int valueToMultiply = 1;
+        for (int i = 0; i < array.length; i++) {
+            sum += array[array.length - i - 1] * valueToMultiply;
+            valueToMultiply *= 10;
+        }
+        return sum;
+    }
+
+    //357 -> [3,5,7]
+    //997 -> [9,9,7]
+    //3215 -> [3,2,1,5]
+    public static int[] numberToArray(int number) {
+        int size = numberOfDigits(number);
+        int[] array = new int[size];
+//        int[] array = new int[numberOfDigits(number)];
+        int i = 0;
+        while (i < array.length) {
+            array[array.length - i - 1] = number % 10;
+            number /= 10;
+            i++;
+        }
+//        for (int j = 0 ; j < array.length; j++) {
+//            array[array.length - i - 1] = number % 10;
+//            number /= 10;
+//        }
+        return array;
+    }
+
+    //zadanie domowe
+    //-10, 20
+    public static int sumOfRandom(int value) {
+        Random random = new Random();
+        int sum = 0;
+        int i = 0;
+        while (sum < value) {
+            sum += random.nextInt(30) - 10;
+            i++;
+        }
+        return i;
+    }
+
+    public static int sumOfDigits(int number) {
+        int sum = 0;
+        while (number > 0) {
+            sum += number % 10;
+            number /= 10; //number = number / 10
+        }
+        return sum;
     }
 
     public static int numberOfDigits(int number) {
@@ -25,16 +86,6 @@ public class Zajecia6 {
             counter++;
         }
         return counter;
-    }
-
-    public static int sumOfDigits(int number) {
-        return 0;
-    }
-
-    //zadanie domowe
-    //-10, 20
-    public static int sumOfRandom(int value) {
-        return 0;
     }
 
     public static int game(int number) {
