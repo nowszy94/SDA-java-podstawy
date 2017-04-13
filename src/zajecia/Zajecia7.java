@@ -30,9 +30,34 @@ public class Zajecia7 {
 //        int[][] matrix1 = fillWithRandomNumbers(3, 3);
 //        int[][] matrix2 = fillWithRandomNumbers(3, 3);
 //        printMatrix(addTwoMatrix(matrix1, matrix2));
-        int[][] matrix = {{1,2,3}, {3,2,1}, {2, 3, 1}};
+//        int[][] matrix = {{1,2,3}, {3,2,1}, {2, 3, 1}};
 //        printMatrix(multiplyBy(matrix, 3));
-        System.out.println(sumOfElements(matrix));
+//        System.out.println(sumOfElements(matrix));
+        ///////////////////////////////////////
+        int[][] matrix1 = fillWithRandomNumbers(3, 4);
+        int[][] matrix2 = fillWithRandomNumbers(4, 8);
+        int[][] product = product(matrix1, matrix2);
+
+        printMatrix(matrix1);
+        System.out.println();
+        System.out.println("\t*");
+        System.out.println();
+        printMatrix(matrix2);
+        System.out.println();
+        System.out.println("\t=");
+        printMatrix(product);
+        ///////////////////////////////////////
+
+
+        int[][] matrix = fillWithRandomNumbers(3, 3);
+        for (int i = 0; i < 100; i++) {
+            matrix = biggerValues(matrix, fillWithRandomNumbers(3, 3));
+            if (i % 10 == 0) {
+                System.out.println();
+                printMatrix(matrix);
+            }
+        }
+        printMatrix(matrix);
     }
 
     //(-15 : 15)
@@ -94,25 +119,57 @@ public class Zajecia7 {
 
     //odwracamy wiersze i kolumny. Zwracamy nowa macierz
     public static int[][] flip(int[][] matrix) {
-        return null;
+        int rowsInOldOne = matrix.length;
+        int columnsInOldOne = matrix[0].length;
+        int[][] resultMatrix = new int[columnsInOldOne][rowsInOldOne];
+        for (int i = 0 ; i < rowsInOldOne; i++) {
+            for (int j = 0; j < columnsInOldOne; j++) {
+                resultMatrix[j][i] = matrix[i][j];
+            }
+        }
+        return resultMatrix;
     }
 
     //bierzemy wieksza wartosc z jednej z dwoch macierzy i wrzucamy ja do nowej
     public static int[][] biggerValues(int[][] matrix1, int[][] matrix2) {
-        return null;
+        int[][] resultMatrix = new int[matrix1.length][matrix1[0].length];
+        for (int i = 0; i < matrix1.length; i++) {
+            for (int j = 0; j < matrix1[0].length; j++) {
+                if (matrix1[i][j] > matrix2[i][j]) {
+                    resultMatrix[i][j] = matrix1[i][j];
+                } else {
+                    resultMatrix[i][j] = matrix2[i][j];
+                }
+//                resultMatrix[i][j] = (matrix1[i][j] > matrix2[i][j]) ? matrix1[i][j] : matrix2[i][j];
+            }
+        }
+        return resultMatrix;
     }
 
     //zwracamy maksymalna wartosc z macierzy
     //czy mozemy uzyc jakiejs gotowej metody?
     public static int maxValue(int[][] matrix) {
-        return 0;
+        int max = Zajecia4.maxFromArray(matrix[0]);
+        for (int i = 1; i < matrix.length; i++) {
+            int maxCandidate = Zajecia4.maxFromArray(matrix[i]);
+            if (max < maxCandidate) {
+                max = maxCandidate;
+            }
+        }
+        return max;
     }
     //product = iloczyn
     public static int[][] product(int[][] matrix1, int[][] matrix2) {
-        return null;
+        int[][] resultMatrix = new int[matrix1.length][matrix2[0].length];
+        for (int i = 0; i< matrix1.length; i++) {
+            for (int j = 0; j < matrix2[0].length; j++) {
+                for (int k = 0; k < matrix2.length; k++) {
+                    resultMatrix[i][j] += matrix1[i][k] * matrix2[k][j];
+                }
+            }
+        }
+        return resultMatrix;
     }
-
-
 
     public static int[][] fillWithNumbersFromUser(int rows, int columns) {
         Scanner scanner = new Scanner(System.in);
