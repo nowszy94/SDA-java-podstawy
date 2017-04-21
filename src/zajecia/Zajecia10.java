@@ -22,9 +22,20 @@ public class Zajecia10 {
 //        System.out.println(multiplyDigits(123));
 //        System.out.println(multiplyDigits(1234));
 //        System.out.println(multiplyDigits(12345));
-        int[][] ints = randomMatrix(3, 10, -5);
-        System.out.println(avg(ints));
-        double[][] avg = avg(randomMatrix(3, 10, -5), randomMatrix(3, 15, 5));
+//        int[][] ints = randomMatrix(3, 10, -5);
+//        System.out.println(avg(ints));
+//        double[][] avg = avg(randomMatrix(3, 10, -5), randomMatrix(3, 15, 5));
+//        System.out.println("4 " + find("Ala ma kota", "ma"));
+//        System.out.println("0 " + find("Ala ma kota", "Ala"));
+//        System.out.println("7 " + find("Ala ma kota", "kot"));
+//        System.out.println("7 " + find("Ala ma kota", "kota"));
+//        System.out.println("-1 " + find("Ala ma kot", "kota"));
+//        System.out.println(countAll("Ala ma kota i ma tez psa", "ma"));
+//        System.out.println(countAll("Ala ma kota i ma tez psa", "mam"));
+//        System.out.println(find("Ala ma kota i ma tez psa", "mam"));
+        System.out.println(checkRoundBraces("((2+2)*2)"));
+        System.out.println(checkRoundBraces("(2+2)*2)"));
+        System.out.println(checkRoundBraces(")(2+2)*2("));
     }
 
     //01234
@@ -126,35 +137,67 @@ public class Zajecia10 {
         }
         return resultMatrix;
     }
-    //DO domu
-    public static String toBinary(int number) {
-        return null;
-    }
-    //DO domu
-    public static int toNumber(String binaryCode) {
-        return 0;
-    }
-    //DO domu
-    //#FF0050 -> {255, 0, 80}
-    public static int[] rgbToValues(String rgb) {
-        return null;
-    }
-
     //01234567
-    //Ala ma kota, kota -> 7
+    //Ala ma kota, 'kota' -> 7
     public static int find(String message, String sentence) {
-        return 0;
+        char[] messageArray = message.toCharArray();
+        char[] sentenceArray = sentence.toCharArray();
+        boolean flag = true;
+        int i = 0;
+        while (flag && i <= messageArray.length - sentenceArray.length) {
+            int j = 0;
+            while(j < sentenceArray.length && messageArray[i+j] == sentenceArray[j]) {
+                j++;
+                if (j == sentenceArray.length) {
+                    flag = false;
+                }
+            }
+            i++;
+        }
+        return flag ? -1 : i - 1;
     }
 
     //Ala ma kota i ma tez psa, ma -> 2
     public static int countAll(String message, String sentence) {
+        int counter = 0;
+        while (find(message, sentence) != -1) {
+            counter++;
+            message = message.substring(find(message, sentence) + 1);
+        }
+        return counter;
+    }
+
+    //((2+2)*2)) -> true
+    //(2+2)*2) -> false
+    //)(2+2)*2( -> false
+    public static boolean checkRoundBraces(String expression) {
+        char[] expressionArray = expression.toCharArray();
+        int counter = 0;
+        int i = 0;
+        while (counter >= 0 && i < expressionArray.length) {
+            if (expressionArray[i] == '(') {
+                counter++;
+            } else if (expressionArray[i] == ')') {
+                counter--;
+            }
+            i++;
+        }
+        return counter == 0;
+    }
+
+    //DO domu
+    public static String toBinary(int number) {
+        return null;
+    }
+
+    //DO domu
+    public static int toNumber(String binaryCode) {
         return 0;
     }
 
-    //((2+2)*2) -> true
-    //(2+2)*2) -> false
-    //)(2+2)*2 -> false
-    public static boolean checkRoundBraces(String expression) {
-        return true;
+    //DO domu
+    //#FF0050 -> {255, 0, 80}
+    public static int[] rgbToValues(String rgb) {
+        return null;
     }
 }
