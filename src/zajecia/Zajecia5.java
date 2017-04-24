@@ -20,8 +20,8 @@ public class Zajecia5 {
 //        Zajecia4.displayArray(getRandomArray(10));
 //
 //        Scanner scanner = new Scanner(System.in);
-//        System.out.println("Insert size:");
-//        int size = scanner.nextInt();
+//        System.out.println("Insert numberOfBooks:");
+//        int numberOfBooks = scanner.nextInt();
 //        System.out.println("Insert bound:");
 //        int bound = scanner.nextInt();
 //        System.out.println("Insert offset:");
@@ -33,7 +33,7 @@ public class Zajecia5 {
 //        Zajecia4.statistics(getRandomArray(10, 15));
 //        System.out.println();
 //        System.out.println();
-//        Zajecia4.statistics(getRandomArray(size, bound, offset));
+//        Zajecia4.statistics(getRandomArray(numberOfBooks, bound, offset));
 //
 //        printSquare(5);
 //        System.out.println();

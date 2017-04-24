@@ -20,7 +20,7 @@ public class ZadaniaZeScannerem {
         //na koniec wyswietlamy tylko elementy podzielne przez 3
         //oraz wyswietlamy srednia wszystkich elementow
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Insert size: ");
+        System.out.println("Insert numberOfBooks: ");
         int size = scanner.nextInt();
         int[] array = new int[size];
         for (int i = 0 ; i< array.length; i++) {
@@ -76,7 +76,7 @@ public class ZadaniaZeScannerem {
 
     public static void fillArrayWithKnownSize() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Insert size: ");
+        System.out.println("Insert numberOfBooks: ");
         int size = scanner.nextInt();
         int[] array = new int[size];
         for (int i = 0; i < array.length; i++) {

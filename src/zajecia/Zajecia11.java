@@ -11,20 +11,52 @@ public class Zajecia11 {
         File file = new File("C:\\Users\\Szymon\\projekt\\SDA-java-podstawy\\file.txt");
 //        readFromFileTest(file);
 //        writeToFileTest(file, "Hello World");
-        readIntegersFromFile(file);
+//        readIntegersFromFile(file);
+//        System.out.println(countOddIntegers(file));
+//        Scanner scanner = new Scanner(file);
+//        System.out.println(scanner.nextLine());
+//        System.out.println(scanner.next());
+        System.out.println(countOddIntegers(file));
+        System.out.println(countOddIntegers(file));
+    }
+
+    public static int countWordsIn(File file) throws FileNotFoundException {
+        Scanner scanner = new Scanner(file);
+        int counter = 0;
+        while (scanner.hasNext()) {
+            scanner.next();
+            counter++;
+        }
+        scanner.close();
+        return counter;
+//        int counter = 0;
+//        try (Scanner scanner = new Scanner(file)) {
+//            while (scanner.hasNext()) {
+//                scanner.next();
+//                counter++;
+//            }
+//        }
+//        return counter;
+    }
+
+    public static int countOddIntegers(File file) throws FileNotFoundException {
+        int counter = 0;
+        Scanner scanner = new Scanner(file);
+        while (scanner.hasNextInt()) {
+            if (scanner.nextInt() % 2 == 1) {
+                counter++;
+            }
+        }
+        return counter;
     }
 
     public static int[] readIntegersFromFile(File file) throws FileNotFoundException {
         int[] array = new int[getLength(file)];
         Scanner scanner = new Scanner(file);
-        for (int i = 0 ; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             array[i] = scanner.nextInt();
         }
         return array;
-    }
-
-    public static int countOddIntegers(File file) {
-        return 0;
     }
 
     public static int getLength(File file) throws FileNotFoundException {
