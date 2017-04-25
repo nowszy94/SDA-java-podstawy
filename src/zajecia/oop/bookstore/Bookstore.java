@@ -50,9 +50,16 @@ public class Bookstore {
         return booksToReturn;
     }
 
-    public Book getBook(String author) {
-        return null;
+    public Book getBook(String ISBN) {
+        Book book = null;
+        int i = 0;
+        while (i < this.numberOfBooks && book == null) {
+            if (books[i].ISBN.equals(ISBN)) {
+                book = books[i];
+            }
+//            book = books[i].ISBN.equals(ISBN) ? books[i] : null;
+            i++;
+        }
+        return book;
     }
-
-
 }

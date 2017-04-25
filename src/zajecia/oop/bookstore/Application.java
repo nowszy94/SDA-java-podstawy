@@ -8,11 +8,13 @@ public class Application {
         Bookstore bookstore = new Bookstore();
         insertExampleData(bookstore);
 //        bookstore.showBooks();
-        Book[] books = bookstore.getBooks("Henryk Sienkiewicz");
-        for (int i = 0; i < books.length; i++) {
-            System.out.println(books[i]);
+//        Book[] books = bookstore.getBooks("Henryk");
+//        for (int i = 0; i < books.length; i++) {
+//            System.out.println(books[i]);
+//        }
+        System.out.println(bookstore.getBook("1234567890"));
+        System.out.println(bookstore.getBook("12345"));
 
-        }
     }
 
     public static void insertExampleData(Bookstore bookstore) {

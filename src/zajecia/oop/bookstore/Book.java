@@ -15,8 +15,7 @@ public class Book {
     public String ISBN;
     public String[] content;
 
-    public Book(String title, String author,
-                String releaseDate, String ISBN) {
+    public Book(String title, String author, String releaseDate, String ISBN) {
         this.title = title;
         this.author = author;
         this.releaseDate = releaseDate;
