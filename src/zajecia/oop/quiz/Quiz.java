@@ -1,11 +1,16 @@
 package zajecia.oop.quiz;
 
+import zajecia.oop.quiz.question.MockQuestionsRepository;
+import zajecia.oop.quiz.question.Question;
+import zajecia.oop.quiz.result.MockResultsRepository;
+
 /**
  * Created by Szymon on 2017-04-25.
  */
 public class Quiz {
     public static void main(String[] args) {
         MockQuestionsRepository questionsRepository = new MockQuestionsRepository();
+        MockResultsRepository resultsRepository = new MockResultsRepository();
         QuizInterface quizInterface = new QuizInterface();
 
         int decision = quizInterface.menu();
@@ -27,7 +32,7 @@ public class Quiz {
 
             quizInterface.showResult(playerName, correctAnswersCounter);
         } else if (decision == 2) {
-            System.out.println("Result not yet supported");
+            quizInterface.showResults(resultsRepository.getAllResults());
         } else {
             System.out.println("End of game");
         }
