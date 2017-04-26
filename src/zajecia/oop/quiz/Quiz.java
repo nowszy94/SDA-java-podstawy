@@ -18,27 +18,33 @@ public class Quiz {
 //        while(decision != 0) {
         while(gameFlag) {
             int decision = quizInterface.menu();
-            if (decision == 1) {
-                String playerName = quizInterface.insertName();
-                quizInterface.beforeStart();
+            switch (decision) {
+                case 1:
+                    String playerName = quizInterface.insertName();
+                    quizInterface.beforeStart();
 
-                Question[] questions = questionsRepository.getQuestions();
-                int correctAnswersCounter = 0;
-                for (int i = 0; i < questions.length; i++) {
-                    boolean result = quizInterface.showQuestion(questions[i]);
-                    if (result) {
-                        quizInterface.correctAnswer();
-                        correctAnswersCounter++;
-                    } else {
-                        quizInterface.incorrectAnswer();
+                    Question[] questions = questionsRepository.getQuestions();
+                    int correctAnswersCounter = 0;
+                    for (int i = 0; i < questions.length; i++) {
+                        boolean result = quizInterface.showQuestion(questions[i]);
+                        if (result) {
+                            quizInterface.correctAnswer();
+                            correctAnswersCounter++;
+                        } else {
+                            quizInterface.incorrectAnswer();
+                        }
                     }
-                }
 
-                quizInterface.showResult(playerName, correctAnswersCounter);
-            } else if (decision == 2) {
-                quizInterface.showTopResults(resultsRepository.getTopResults(10));
-            } else {
-                gameFlag = false;
+                    quizInterface.showResult(playerName, correctAnswersCounter);
+                    break;
+                case 2:
+                    quizInterface.showTopResults(resultsRepository.getTopResults(10));
+                    break;
+                case 0:
+                    gameFlag = false;
+                    break;
+                default:
+                    System.out.println("Wrong decision");
             }
         }
         quizInterface.afterGameEnded();
