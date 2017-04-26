@@ -81,4 +81,8 @@ public class QuizInterface {
             System.out.println();
         }
     }
+
+    public void afterGameEnded() {
+        System.out.println("Game ended.");
+    }
 }
