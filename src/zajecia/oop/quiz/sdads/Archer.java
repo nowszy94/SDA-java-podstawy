@@ -14,8 +14,4 @@ public class Archer implements Monster {
 
     }
 
-    @Override
-    public int xyz(String a, int b) {
-        return 0;
-    }
 }
