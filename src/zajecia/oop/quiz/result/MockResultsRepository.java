@@ -3,7 +3,7 @@ package zajecia.oop.quiz.result;
 /**
  * Created by Szymon on 2017-04-25.
  */
-public class MockResultsRepository {
+public class MockResultsRepository implements ResultsRepository {
 
     private Result[] results;
 

@@ -5,6 +5,7 @@ import zajecia.oop.quiz.question.Question;
 import zajecia.oop.quiz.result.FileResultsRepository;
 import zajecia.oop.quiz.result.MockResultsRepository;
 import zajecia.oop.quiz.result.Result;
+import zajecia.oop.quiz.result.ResultsRepository;
 
 /**
  * Created by Szymon on 2017-04-25.
@@ -12,7 +13,7 @@ import zajecia.oop.quiz.result.Result;
 public class Quiz {
     public static void main(String[] args) {
         MockQuestionsRepository questionsRepository = new MockQuestionsRepository();
-        FileResultsRepository resultsRepository = new FileResultsRepository("C:\\Users\\Szymon\\projekt\\SDA-java-podstawy\\results.txt");
+        ResultsRepository resultsRepository = new FileResultsRepository("C:\\Users\\Szymon\\projekt\\SDA-java-podstawy\\results.txt");
         QuizInterface quizInterface = new QuizInterface();
 
         boolean gameFlag = true;

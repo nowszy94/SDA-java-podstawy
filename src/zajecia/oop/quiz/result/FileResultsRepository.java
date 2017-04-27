@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * Created by Szymon on 2017-04-26.
  */
-public class FileResultsRepository {
+public class FileResultsRepository implements ResultsRepository {
 
     private String pathToFile;
 
@@ -60,7 +60,7 @@ public class FileResultsRepository {
         return resultsToReturn;
     }
 
-    public void add(Result result) {
+    public void add(Result result)  {
         try (FileWriter fw = new FileWriter(fileWithResults, true);
              BufferedWriter bw = new BufferedWriter(fw);
              PrintWriter out = new PrintWriter(bw)) {
